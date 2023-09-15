@@ -1,0 +1,6 @@
+<VirtualHost *:80>
+    ServerName seu-dominio.com
+
+    ProxyPass /api http://endereco-da-sua-api
+    ProxyPassReverse /api http://endereco-da-sua-api
+</VirtualHost>

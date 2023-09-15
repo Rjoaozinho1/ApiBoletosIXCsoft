@@ -1,0 +1,24 @@
+1 - Primeira etapa é produzir sua API e usa-la em algum emulador para testar
+
+2 - Criar um aplicativo no servidor que ira suportar esse serviço da API
+2.1 - Ir a pasta etc/systemd/system/ e criar o aplicativo usando gunicorn
+2.2 - O arquivo normalmente tem a extensão .service(exemplo_conf_arquivo.ini)
+2.3 - Iniciar e executar o serviço (systemctl daemon-reload,
+systemctl enable meu_aplicativo.service,
+systemctl start meu_aplicativo.service,
+systemctl status meu_aplicativo.service)
+
+3 - Pegar uma VM(nginx) para executar o serviço automaticamente, sendo escalavel
+3.1 - Usar comandos systemctl start nginx, systemctl enable nginx para executar a VM
+3.2 - Criar um arquivo para configurar sua API(configAppLinux.txt)
+3.3 - Verifique a configurações e reiniciar o nginx(nginx -t,
+systemctl restart nginx)
+3.4 - Atualizar o DNS, certifique-se de que o DNS do seu domínio esteja apontando para o endereço IP da sua VM.
+
+4 - Criar uma rota para o usa da API(apache2) 
+4.1 - O Apache2 possui um módulo chamado mod_proxy, para habilitá-lo(a2enmod proxy
+a2enmod proxy_http)
+4.2 - Reiniciar o apache2(systemctl restart apache2)
+4.3 - Configurar o VirtualHost, abrir o arquivo de configuração do Virtual Host com um editor de texto(config_apache.txt)
+4.4 - Agora, é necessario habilitar o VirtualHost configurado(a2ensite nome-do-site.conf)
+4.5 - Reinicie o Apache

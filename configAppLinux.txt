@@ -1,0 +1,10 @@
+server {
+    listen 8080;
+    server_name NOME_SERVIDOR;
+
+    location /apiLoomy/ {
+        rewrite ^/apiLoomy(/.*)$ $1 break;
+        include proxy_params;
+        proxy_pass CAMINHO_ARQUIVO.sock;
+    }
+}

@@ -22,7 +22,7 @@ def criar_nome_boleto(boleto):
 # Função para gerar o boleto
 def gerar_boleto(boleto):
     # URL de consulta de boletos
-    url = "https://erp.loomy.com.br/webservice/v1/get_boleto"
+    url = "https://dominio/webservice/v1/get_boleto"
     
     # Configurar o payload como JSON
     payload = json.dumps({
